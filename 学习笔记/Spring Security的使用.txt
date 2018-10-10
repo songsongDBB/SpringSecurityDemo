@@ -33,6 +33,7 @@
    <!-- 以下页面不登录也能访问 -->
 	<http pattern="/login.html" security="none"/>
 	<http pattern="/login_error.html" security="none"/>
+  在自定义的登录页面，form表单的action="/login"，这个也是security配置好的，可以修改。注意，form表单一定要写method="POST"
 	
 5、在拦截规则中，加入<csrf disabled="true"/>，表示关闭拦截csrf拦截机制
    CSRF（Cross-site request forgery）跨站请求伪造，也被称为“One Click Attack”或者Session Riding，通常缩写为CSRF或者XSRF，是一种对网站的恶意利用，如果是jsp页面，那每个页面都会自带csrf
@@ -55,3 +56,4 @@
 			 
 		 }
 	 });
+	 
