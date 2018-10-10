@@ -36,4 +36,22 @@
 	
 5、在拦截规则中，加入<csrf disabled="true"/>，表示关闭拦截csrf拦截机制
    CSRF（Cross-site request forgery）跨站请求伪造，也被称为“One Click Attack”或者Session Riding，通常缩写为CSRF或者XSRF，是一种对网站的恶意利用，如果是jsp页面，那每个页面都会自带csrf
-   在html页面中，也可以在js代码中，给请求添加csrf头信息，适用于发送ajax请求
+   在html页面中，也可以在js代码中，给请求添加csrf头信息，适用于发送ajax请求，如：
+	
+	// 获取 CSRF Token 
+	var csrfToken = $("meta[name='_csrf']").attr("content");
+	var csrfHeader = $("meta[name='_csrf_header']").attr("content");
+	
+	$.ajax({ 
+		 url: url , 
+		 
+		 beforeSend: function(request) {			
+			 request.setRequestHeader(csrfHeader, csrfToken); // 添加  CSRF Token 
+		 },
+		 success: function(data){
+			
+		 },
+		 error : function() {
+			 
+		 }
+	 });
